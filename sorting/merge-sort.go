@@ -21,26 +21,26 @@ func mergeSort(nums []int) []int {
 }
 
 func merge(left []int, right []int) []int {
-	var result []int
+	result := make([]int, len(left) + len(right))
 
 	l, r := 0, 0
 	for l < len(left) && r < len(right) {
 		if left[l] < right[r] {
-			result = append(result, left[l])
+			result[l+r] =left[l]
 			l += 1
 		} else {
-			result = append(result, right[r])
+			result[l+r] = right[r]
 			r += 1
 		}
 	}
 
 	for l < len(left) {
-		result = append(result, left[l])
+		result[l+r] =left[l]
 		l += 1
 	}
 
 	for r < len(right) {
-		result = append(result, right[r])
+		result[l+r] = right[r]
 		r += 1
 	}
 
